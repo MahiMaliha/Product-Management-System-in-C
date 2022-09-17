@@ -177,3 +177,14 @@ void addProd(){	// function to add products to the file
 
 	writefile(); // putting/saving this to the file.
 }
+int IDChecker(int i, int j)	//checking the input id
+{
+	count=readFile();
+    printf("Product ID: ");
+    fflush(stdin);
+	gets(prod[count].id);
+    if (strcmp(prod[i].id,prod[j].id)==0){
+        printf("ID number is already taken!");
+        return IDChecker(i++,j--);
+		}
+}
