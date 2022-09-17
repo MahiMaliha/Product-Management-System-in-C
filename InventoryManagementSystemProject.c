@@ -13,3 +13,6 @@ struct product
 		int discount;  // discount for this product
 		float sales;   // accumulated sales, total sales for this product
 	};
+struct product prod[30];//the maximum array elements.
+	int count = 0;	// this will be incremented if there is a new product and this is the
+ 	FILE *f;	//for the file pointer
