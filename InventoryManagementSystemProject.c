@@ -265,3 +265,21 @@ int i;
   printf("RECORD UPDATED");
  }
 }
+int checkID(char id[]){ // checking the id if available
+	int i;
+count=readFile();
+
+
+ 		readFile();
+ 		for(i=0;i<count;i++){
+
+	if(strcmp(id,prod[i].id)!=0){ //if the id and data id doesnt match.
+
+			 fclose(f);
+		}
+   return 1;		// returning an error.
+  }
+
+ fclose(f);
+ return 0; // return 0 if no error.
+}
