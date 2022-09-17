@@ -156,3 +156,24 @@ if(z==false){	// will be executed if the product id is not available.
 }
 writefile();
 }
+void addProd(){	// function to add products to the file
+
+  	printf("ENTER NEW PRODUCTS\n");
+	readFile();		//reading the files .
+  	    if (count>0) {
+  	    count=readFile();
+  		IDChecker(0,count); // to check if the id is already used.
+		}
+	else{
+		printf("\nProduct ID Number: ");
+		fflush(stdin);
+		gets(prod[count].id);
+		}
+		printf("Product Name: ");gets(prod[count].name);
+		printf("Quantity of the product: ");scanf("%d",&prod[count].quantity);
+		printf("Price of the product: ");scanf("%f",&prod[count].price);
+		printf("Item Discount: ");scanf("%d",&prod[count].discount);
+		++count; // increment count for the product positions and how many are they in the array.
+
+	writefile(); // putting/saving this to the file.
+}
