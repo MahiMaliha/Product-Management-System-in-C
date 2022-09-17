@@ -188,3 +188,80 @@ int IDChecker(int i, int j)	//checking the input id
         return IDChecker(i++,j--);
 		}
 }
+
+void editProd(){	//Editing the product function
+	char id[10];
+int test;
+int i;
+	int choice;
+  printf("EDIT A PRODUCT!");
+  printf("\nEnter the id of the product that you want to edit: "); // users input for what data will be change
+	fflush(stdin);
+	gets(id);
+	test=checkID(id);
+    if (test == 0)
+ {
+  printf("The id num %s is not found.", id); // if the data is empty
+ }
+ else
+ {
+ 		readFile();
+  {
+	for(i=0;i<count;i++){
+
+  if(strcmp(id,prod[i].id)!=0) // if the data is not empty
+	writefile();
+   else
+   {
+    printf("\n1. Update product ID Number?");
+    printf("\n2. Update Name of the product? ");
+    printf("\n3. Update Quantitiy of the product?");
+    printf("\n4. Update Price of the product?");
+    printf("\n5. Update Discount of the product?");
+    printf("\nEnter your choice:");
+    fflush(stdin);
+    scanf("%d", &choice);
+
+    switch (choice)
+    {
+    case 1:
+
+     printf("Enter new ID: ");
+ 		fflush(stdin);
+        gets(prod[i].id);
+     break;
+    case 2:
+     printf("Enter new Name: ");
+    	fflush(stdin);
+        gets(prod[i].name);
+     break;
+    case 3:
+     printf("Enter Quantity: ");
+    scanf("%d",&prod[i].quantity);
+    break;
+    case 4:
+     printf("Enter the new price: ");
+    scanf("%f",&prod[i].price);
+     break;
+     case 5:
+     	 printf("Enter the new discount of the product: ");
+   scanf("%d",&prod[i].discount);
+    default:
+     printf("Invalid Selection");
+     break;
+    }
+   writefile();
+   }
+
+   }
+  }
+  fclose(f);
+  f = fopen("Inventory.txt", "r");
+ readFile();
+ {
+   writefile();
+  }
+  fclose(f);
+  printf("RECORD UPDATED");
+ }
+}
