@@ -75,3 +75,19 @@ void disZeroQuant(){ // for the switch number 7= calling all the product id with
 writefile();
 
 }
+void dispHsale(){ // to display the highest sale function
+	int high,i;
+	 high=prod[0].numSold; // getting the first element of the array that has been sold
+     for(i=0;i<count;i++) // loop for the num item sold.
+     {
+          if(prod[i].numSold>high)	//if the element containts the highest sold product.
+          high=prod[i].numSold;//it will pass on the high variable.
+     }
+        printf("\nThe Highest Product Sale is: \n");
+   	for(i=0;i<count;i++) // loop to search the highest sold product.
+     {
+    if(prod[i].numSold==high)// printing the highest product.
+    printf("Name of the product: %s \nProduct Id: %s \nQuantity left: %d \nNumber of product sold: %d \nPrice of the product: %.2f \nDiscount of the product: %d %% \nTotal Sales: %.2lf\n",prod[i].name,prod[i].id,prod[i].quantity,prod[i].numSold,prod[i].price,prod[i].discount,prod[i].sales);
+     }
+
+}
