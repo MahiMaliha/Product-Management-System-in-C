@@ -132,3 +132,27 @@ void purchaseprod(){// function for purchasing a product
 
 
 }
+void deleteprod(){ //function for the delete product.
+	count=readFile();
+	char id[10];
+	int i,j;
+	int z=false;
+printf("Enter the id that you want to be delete : "); //user's input for deleting.
+fflush(stdin);
+gets(id);
+
+for(i=0;i<count;i++){		//loop to finding the user's input
+		z=true;
+	if(strcmp(prod[i].id,id)==0){ // if the user's input matched the data
+	for( j=i; j<(count-1); j++)	// it will erase the selected data.
+			{
+				prod[j]=prod[j+1];
+			}
+			count--;
+	}
+}
+if(z==false){	// will be executed if the product id is not available.
+	printf("Cant find product id: %s .",id);
+}
+writefile();
+}
