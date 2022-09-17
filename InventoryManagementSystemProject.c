@@ -283,3 +283,79 @@ count=readFile();
  fclose(f);
  return 0; // return 0 if no error.
 }
+void displayprod(){
+	int i;
+
+  count = readFile(); // the output is how many products inside the file.
+  if (count < 0)
+    puts("cannot open file");
+	printf(" \t\t\t\t *****  INVENTORY *****\n");
+   printf("------------------------------------------------------------------------------------\n");
+   printf("S.N.|    NAME     |  PROD ID  |  QUANTITY | PROD SOLD |  PRICE  | DISCOUNT | SALES |\n");
+   printf("------------------------------------------------------------------------------------\n");
+
+   for (i=0;i<count;i++){ // getting the details on each product updates.
+   printf("%d     %-10s       %-8s     %-5d      %-3d       %-6.2f    %-5d%%    P%.2lf\n",i+1,prod[i].name,prod[i].id,prod[i].quantity,prod[i].numSold,prod[i].price,prod[i].discount,prod[i].sales);
+	}
+
+}
+
+
+
+
+int main (){
+	int choice;
+	count = readFile(); // ihapa una pila imong products
+	if(count < 0) // there is no file located.
+		printf("Cannot locate file\n");
+do {
+	printf("\n");
+	printf("\t\t\t  ========================================================\n");
+	printf("\t\t\t          PRODUCT INVENTORY MANAGEMENT PROJECT\n");
+	printf("\t\t\t  ========================================================");
+
+	printf("\n\nPress:");
+	printf("\n 1.) Input new product record.");
+	printf("\n 2.) Edit a Product.");
+	printf("\n 3.) Delete a Product");
+	printf("\n 4.) Display all existing product.");
+	printf("\n 5.) Make a purchase.");
+	printf("\n 6.) Display the product record with highest sale.");
+	printf("\n 7.) Display all product with zero quantity");
+	printf("\n 8.) Exit the program.");
+	printf("\n Choice Any Of One:--> ");
+	scanf("%d", &choice);
+	     switch(choice){
+        case 1 :  //add product
+                addProd();
+                break;
+        case 2://edit data product
+		    	editProd();
+				break;
+        case 3://delete a product
+        deleteprod();
+               	 break;
+        case 4: //display the products
+               displayprod();
+                break;
+       	case 5://make a purchased.
+       	purchaseprod();
+		 break;
+	   	case  6:
+	   		dispHsale(); // to display highest sale.
+		 	break;
+		case 7:
+	disZeroQuant(); // display lowest sale.
+		 	break;
+		case 8:
+		 	  exit(1);
+			   break;
+		 default :
+                printf("Your choice is wrong please try again");
+            break;
+      }
+  }while(choice!=8); // infinite loop until the user will choose number8 .
+  printf("Thankyou for using this program");
+}
+
+
