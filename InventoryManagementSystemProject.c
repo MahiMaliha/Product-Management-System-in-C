@@ -91,3 +91,44 @@ void dispHsale(){ // to display the highest sale function
      }
 
 }
+void purchaseprod(){// function for purchasing a product
+	int quant,i;
+    char id[10];
+    int z=false;
+    count=readFile();
+	printf("Sell an Item ");
+    printf("\nProduct ID: ");
+    fflush(stdin);
+	gets(id);
+    for (i=0; i<count; i++){
+        if (strcmp(id,prod[i].id)==0) 	// if the id that the user want to find and the data id that has been saved at file is matched.
+        {
+        	z=true;
+        printf("\nItem found! Containing: \n");//...then display the match
+	   	printf("\nProduct name: %s",prod[i].name);
+		printf("\nPrice: %.2lfphp\n\n",prod[i].price);
+
+            printf("Enter the quantity you want to buy  : ");
+            fflush(stdin);
+			scanf("%d",&quant);
+            if (quant>prod[i].quantity){		// if the quantity is lessthan the users quant
+               puts("\nInsufficient Quantity\nPlease Restock.\n ");
+             break; // break and back to the choices.
+				}
+
+            float tempSales = prod[i].sales;  // will be executed if the quantity is greater than the users selected quantity.
+            prod[i].numSold += quant;
+            prod[i].quantity -= quant;
+            prod[i].sales = quant*(prod[i].price*(prod[i].discount/100.0));
+            prod[i].sales += tempSales;
+			}
+
+	}
+ if(z==false){	//if the product id is not available.
+
+	printf("Cant find the product id: %s.",id);
+}
+	writefile();
+
+
+}
