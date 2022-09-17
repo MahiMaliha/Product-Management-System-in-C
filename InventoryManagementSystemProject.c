@@ -39,3 +39,26 @@ nt writefile()//write file function
     fclose(f);
     return 0;
 }
+int readFile() // read file function
+{
+    int n = 0;
+    int i;
+    f = fopen("inventory.txt", "r");
+    if (f == NULL)
+        return -1;
+    fscanf(f, "%d\n", &n);
+    for (i = 0; i < n; ++i)
+    {
+        fgets(prod[i].id, 10, f);
+        prod[i].id[strlen(prod[i].id) - 1] = 0; // remove new lines
+        fgets(prod[i].name, 20, f);
+        prod[i].name[strlen(prod[i].name)-1] = 0; // remove new lines
+        fscanf(f, "%d", &prod[i].quantity);
+        fscanf(f, "%d", &prod[i].numSold);
+        fscanf(f, "%f", &prod[i].price);
+        fscanf(f, "%d", &prod[i].discount);
+        fscanf(f, "%f\n", &prod[i].sales);
+    }
+    fclose(f);
+    return n;
+}
